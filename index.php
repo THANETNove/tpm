@@ -48,11 +48,15 @@
                         </a>
                         &nbsp;
                         <?php 
-                        if(isset($_SESSION['']))
+                         if(isset($_SESSION['login_user'])) {
+                            echo '<li><button><a href="user_info.php">, ' . $_SESSION['login_name'] . '</a></button></li>';
+                        } else {
                         ?>
                         <a class="btn btn-outline-dark" href="login.php">
                             Login
-                        </a>
+                        </a> 
+                        <?php }
+                        ?>
                     </form>
                 </div>
             </div>

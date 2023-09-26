@@ -5,7 +5,7 @@
 	<meta name="author" content="Muhamad Nauval Azhar">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="description" content="This is a Sign up page template based on Bootstrap 5">
-	<title>Sign up</title>
+	<title> Signup</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <body>
@@ -27,45 +27,45 @@
 					</div>
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
-							<h1 class="fs-4 card-title fw-bold mb-4">Sign up</h1>
+							<h1 class="fs-4 card-title fw-bold mb-4">สมัครสมาชิก</h1>
 							<form method="POST" class="needs-validation" novalidate="" autocomplete="off" action="register.check.php">
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="name">Name</label>
+									<label class="mb-2 text-muted" for="name">ชื่อผู้ใช้งาน</label>
 									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
 									<div class="invalid-feedback">
-										Name is required	
+										ต้องระบุชื่อผู้ใช้งาน
 									</div>
 								</div>
 
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="Pnum">Phone Number</label>
-									<input id="phonenumber" type="text" class="form-control" name="phonenumber" value="" required>
+									<label class="mb-2 text-muted" for="username">เบอร์โทรศัพท์มือถือ</label>
+									<input id="username" type="text" class="form-control" name="username" value="" required>
 									<div class="invalid-feedback">
-										Phone Number is invalid
+										เบอร์โทรศัพท์มือถือไม่ตรงกับที่ลงทะเบียนไว้
 									</div>
 								</div>
 
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="password">Password</label>
+									<label class="mb-2 text-muted" for="password">รหัสผ่าน</label>
 									<input id="password" type="password" class="form-control" name="password" min="8" max="16" required>
 								    <div class="invalid-feedback">
-								    	Password is required
+								    	ต้องระบุรหัสผ่าน
 							    	</div>
 								</div>
-								<p class="form-text text-muted mb-3">
-									By registering you agree with our terms and condition.
-								</p>
 
 								<div class="align-items-center d-flex">
+								<a href="index.php" class="text-light"><button type="" class="btn btn-danger ms-0">
+								ย้อนกลับ
+								</a></button>
 									<button type="submit" class="btn btn-primary ms-auto">
-										Register	
+										สมัครสมาชิก	
 									</button>
 								</div>
 							</form>
 						</div>
 						<div class="card-footer py-3 border-0">
 							<div class="text-center">
-								Already have an account? <a href="login.php" class="text-dark">Login</a>
+								สมัครสมาชิกแล้ว ? <a href="login.php" class="text-primary">เข้าสู่ระบบ</a>
 							</div>
 						</div>
 					</div>

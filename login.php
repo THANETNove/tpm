@@ -19,39 +19,42 @@
 					</div>
 					<div class="card shadow-lg">
 						<div class="card-body p-5">
-							<h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
-							<form method="POST" class="needs-validation" novalidate="" autocomplete="off">
+							<h1 class="fs-4 card-title fw-bold mb-4">เข้าสู่ระบบ</h1>
+							<form method="POST" class="needs-validation" novalidate="" autocomplete="off" action="login.check.php">
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="phonenumber">Phone Number</label>
-									<input id="phonenum" type="text" class="form-control" name="phonenumber" value="" required autofocus>
+									<label class="mb-2 text-muted" for="username">เบอร์โทรศัพท์มือถือ</label>
+									<input id="username" type="text" class="form-control" name="username" value="" required autofocus>
 									<div class="invalid-feedback">
-										Phone number is invalid
+										เบอร์โทรศัพท์มือถือไม่ตรงกับที่ลงทะเบียนไว้
 									</div>
 								</div>
 
 								<div class="mb-3">
+								<label class="text-muted" for="password" id="password">รหัสผ่าน</label>
+									<input id="password" type="password" class="form-control" name="password" required>
+								    <div class="invalid-feedback">
+								    	จำเป็นต้องระบุรหัสผ่าน
+							    	</div>
 									<div class="mb-2 w-100">
-										<label class="text-muted" for="password">Password</label>
-										<a href="forgot.html" class="float-end">
-											Forgot Password?
+										<a href="forgot.html" class="float-start">
+											ลืมรหัสผ่าน?
 										</a>
 									</div>
-									<input id="passwords" type="password" class="form-control" name="password" required>
-								    <div class="invalid-feedback">
-								    	Password is required
-							    	</div>
 								</div>
-
+								<br>
 								<div class="d-flex align-items-center">
+								<a href="index.php" class="text-light"><button type="" class="btn btn-danger ms-0">
+									ย้อนกลับ
+								</a></button>
 									<button type="submit" class="btn btn-primary ms-auto">
-										Login
+										เข้าสู่ระบบ
 									</button>
 								</div>
 							</form>
 						</div>
 						<div class="card-footer py-3 border-0">
 							<div class="text-center">
-								Don't have an account? <a href="register.php" class="text-dark">Create One</a>
+								ยังไม่มีบัญชีผู้ใช้ ? <a href="register.php" class="text-primary">สมัครเลย</a>
 							</div>
 						</div>
 					</div>
