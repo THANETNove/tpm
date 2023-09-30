@@ -1,3 +1,11 @@
+<?php 
+    require_once('fn.php');
+    require_once('dbcon.php');
+    if(!isset($_SESSION['login_username']))
+    {
+        redirect('login.php');
+    }else{
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,16 +54,8 @@
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </a>
-                        &nbsp;
                         <?php 
-                         if(isset($_SESSION['login_user'])) {
-                            echo '<li><button><a href="user_info.php">, ' . $_SESSION['login_name'] . '</a></button></li>';
-                        } else {
-                        ?>
-                        <a class="btn btn-outline-dark" href="login.php">
-                            Login
-                        </a> 
-                        <?php }
+                            echo '<li><button class="btn btn-black-text btn-outline-dark"><a href="logout.php">, '.$_SESSION['login_name'].'</a></button></li>';
                         ?>
                     </form>
                 </div>
@@ -76,88 +76,88 @@
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
+                <div class="col mb-4">
+                        <div class="card h-60 w-100">
+                            <!-- Product image wrapper - Center image -->
+                            <div class="d-flex justify-content-center align-items-center mt-4">
+                                <img src="img\badge.png" alt="..." width="70" height="70"/>
+                            </div>
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
+                                    <h3 class="fw-bolder">คุณภาพดี</h3>
                                     <!-- Product price-->
-                                    $40.00 - $80.00
+                                    <span class="text-mute text-decoration-line-throught">รับรองความพึงพอใจ</span>
                                 </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
+                    <div class="col mb-4">
+                        <div class="card h-60 w-100">
+                            <!-- Product image wrapper - Center image -->
+                            <div class="d-flex justify-content-center align-items-center mt-4">
+                                <img src="img\delivery.png" alt="..." width="70" height="70"/>
+                            </div>
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
+                                    <h3 class="fw-bolder">ขนส่งรวดเร็ว</h3>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
+                                    <span class="text-mute text-decoration-line-throught">ฉับไว ทันใจลูกค้า</span>
                                 </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
+                    <div class="col mb-4">
+                        <div class="card h-60 w-100">
+                            <!-- Product image wrapper - Center image -->
+                            <div class="d-flex justify-content-center align-items-center mt-4">
+                                <img src="img\protection.png" alt="..." width="70" height="70"/>
+                            </div>
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
+                                    <h3 class="fw-bolder">ปลอดภัย</h3>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
+                                    <span class="text-mute text-decoration-line-throught">ไร้สารปนเปื้อน</span>
                                 </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
-                        <div class="card h-50">
-                            <!-- Product image-->
-                            <br>
-                            <img src="img\badge.png" alt="..." width="100" height="100"/>
+                    <div class="col mb-4">
+                        <div class="card h-60 w-100">
+                            <!-- Product image wrapper - Center image -->
+                            <div class="d-flex justify-content-center align-items-center mt-4">
+                                <img src="img\admin.png" alt="..." width="70" height="70"/>
                             </div>
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h3 class="fw-bolder">แนะนำถูกใจ</h3>
+                                    <!-- Product price-->
+                                    <span class="text-mute text-decoration-line-throught">ตามความต้องการของลูกค้า</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="container mt-5">    
+        <div class="row">
+            <!-- Left side (image) column -->
+            <div class="col-md-5">
+                <img src="img\p2.jpg" alt="Image" class="img-fluid ml-4" width="500" height="500">
+            </div>
+            <!-- Right side (text) column -->
+            <div class="col-md-5" style="background-color:#EAFAF1">
+                <div class="p-4">
+                    <h2 align="center">ถุงพลาสติก</h2>
+                    <h4>เราเป็นผู้เชียวชาญการผลิตและจำหน่ายผลิตภัณฑ์บรรจุภัณฑ์เกี่ยวกับถุงพลาสติกหลากหลายรูปแบบที่เหมาะสมกับการใช้งานของลูกค้า โดยเราเน้นการคัดสรรวัตถุดิบที่มีคุณภาพ และ สะอาดปลอดภัยต่อผู้ใช้งาน</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
@@ -169,3 +169,6 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
+<?php 
+    }
+?>
