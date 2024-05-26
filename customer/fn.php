@@ -7,4 +7,7 @@
     {
         echo "<script> alert('".$message."');</script>";
     }
+    function goBack(){
+        echo "<script> { window.history.back() } </script>"; 
+    }
 ?>

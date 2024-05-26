@@ -10823,4 +10823,9 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+  .no-record{
+    text-align: center;
+    clear : both;
+    margin : 40px;
+  }
 }

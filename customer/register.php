@@ -8,6 +8,11 @@
 	<title> Signup</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
+<style>
+        body{
+            background-color: #7DCEA0;
+        }
+    </style>
 <body>
 <!--?php 
 	require_once('dbcon.php');
@@ -30,10 +35,10 @@
 							<h1 class="fs-4 card-title fw-bold mb-4">สมัครสมาชิก</h1>
 							<form method="POST" class="needs-validation" novalidate="" autocomplete="off" action="register.check.php">
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="name">ชื่อผู้ใช้งาน</label>
-									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+									<label class="mb-2 text-muted" for="name">อีเมล์สำหรับใช้งาน</label>
+									<input id="Email" type="email" class="form-control" name="Email" value="" required autofocus>
 									<div class="invalid-feedback">
-										ต้องระบุชื่อผู้ใช้งาน
+										ระบุอีเมล์สำหรับใช้งาน
 									</div>
 								</div>
 
@@ -45,13 +50,15 @@
 							    	</div>
 
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="username">เบอร์โทรศัพท์มือถือ</label>
-									<input id="username" type="text" class="form-control" name="username" value="" required>
+									<label class="mb-2 text-muted" for="confirmPassword">ยืนยีนรหัสผ่านอีกครั้ง</label>
+									<input id="confirmPassword" type="password" class="form-control" name="confirmPassword" value="" required>
 									<div class="invalid-feedback">
-										เบอร์โทรศัพท์มือถือไม่ตรงกับที่ลงทะเบียนไว้
+										รหัสผ่านไม่ตรงกัน
 									</div>
 								</div>
 								</div>
+
+								
 
 								<div class="align-items-center d-flex">
 								<a href="index.php" class="text-light"><button type="" class="btn btn-danger ms-0">

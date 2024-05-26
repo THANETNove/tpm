@@ -1,6 +1,10 @@
 <?php 
     require_once('fn.php');
     require_once('dbcon.php');
+
+    if(isset($_SESSION["userId"]) && ($_SESSION["userStatus"] == 0)){
+            redirect("register.code.php");
+    }else{
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,44 +27,13 @@
         }
     </style>
     <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">T P M</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">หน้าหลัก</a></li>
-                        <li class="nav-item"><a class="nav-link" href="news.php">ข่าวสาร</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">บริการ</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="shop.php">สินค้า</a></li>
-                                <li><a class="dropdown-item" href="design.php">สกรีนถุง</a></li>
-                                <!--li><hr class="dropdown-divider" /></+li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>-->
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="about.php">เกี่ยวกับเรา</a></li>
-                    </ul>
-                    <form class="d-flex">
-                        <a class="btn btn-outline-dark" href="cart.php">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </a>
-                        <?php 
-                        if(isset($_SESSION['login_user'])){
-                            echo '<li><button class="btn btn-black-text btn-outline-dark"><a href="logout.php">, '.$_SESSION['login_name'].'</a></button></li>';
-                        }else{
-                            echo '<li><button class="btn btn-black-text btn-outline-dark"><a href="login.php">Login</a></button></li>';
-                        }
-                        ?>
-                    </form>
-                </div>
-            </div>
-        </nav>
+    <?php 
+            require_once("nav.inc.php");
+
+            $sql = "SELECT * FROM news";
+            $result = mysqli_query($mysqli,$sql) or die ("Error in sql : $sql".mysqli_error($mysqli));
+            $row = mysqli_fetch_array($result)
+        ?>
         <!-- Header-->
         <header class="bg-dark py-5" src="img\bg2.jpg">
             <div class="container px-4 px-lg-5 my-5">
@@ -71,10 +44,10 @@
             </div>
         </header>
         <br>
-        <p  style="text-align: center; color: green;">เรามุ่งมั่นพัฒนาผลิตภัณฑ์ เพื่อตอบสนองลูกค้ามาเป็นเวลายาวนาน</p>
+        <h5  style="text-align: center; color: green;"><i>เรามุ่งมั่นพัฒนาผลิตภัณฑ์ เพื่อตอบสนองลูกค้ามาเป็นเวลายาวนาน</i></h5>
         <!-- Section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
+        <section class="">
+            <div class="container-fluid px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-4">
                         <div class="card h-60 w-100">
@@ -141,31 +114,92 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container mt-5">    
-        <div class="row">
-            <!-- Left side (image) column -->
-            <div class="col-md-5">
-                <img src="img\p2.jpg" alt="Image" class="img-fluid ml-4" width="500" height="500">
-            </div>
-            <!-- Right side (text) column -->
-            <div class="col-md-5" style="background-color:#EAFAF1">
-                <div class="p-4">
-                    <h2 align="center">ถุงพลาสติก</h2>
-                    <h4>เราเป็นผู้เชียวชาญการผลิตและจำหน่ายผลิตภัณฑ์บรรจุภัณฑ์เกี่ยวกับถุงพลาสติกหลากหลายรูปแบบที่เหมาะสมกับการใช้งานของลูกค้า โดยเราเน้นการคัดสรรวัตถุดิบที่มีคุณภาพ และ สะอาดปลอดภัยต่อผู้ใช้งาน</h4>
+                <div class="card mt-2 mb-5" style="max-height:600px">
+                    <div class="row">
+                    <div class="col-6">
+                        <img src="img/p2.jpg" style="max-height:600px;" class="img-fluid">
+                    </div>
+                    <div class="col-6">
+                        <h1 class="text-center mt-5" style="color:#aebdac"><strong><i>ถุงพลาสติก</i></strong></h1>
+                        <p style="color:#aebdac" class="text-center">ถุงหูหิ้ว HDPE, ถุงร้อน PP, ถุงเย็น LLDPE และถุงสั่งทำ</p>
+                        <h4 class="mt-5 text-center px-5">เราเป็นผู้เชียวชาญการผลิตและจำหน่ายผลิตภัณฑ์บรรจุภัณฑ์เกี่ยวกับถุงพลาสติกหลากหลายรูปแบบที่เหมาะสมกับการใช้งานของลูกค้า 
+                            โดยเราเน้นการคัดสรรวัตถุดิบที่มีคุณภาพ และ สะอาดปลอดภัยต่อผู้ใช้งาน</h4>
+                        <div class="mt-5 text-center">
+                            <a class="btn btn-primary" href="product.php" style="background-color:brown;border-color:brown;"><i>หน้าสินค้า</i></a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
+                </div>
+                <div class="row">
+                   <div class="col-4 ">
+                        <img src="img/Test.jpg" class="rounded rounded-circle img-fluid" style="max-height: 320px;">
+                        <div class="card d-flex justify-content-between border border-dark mt-2 mb-2 text-center" style="max-width: 236px;">
+                        <h5>ถุง HDPE <br> เนื้อขาวขุ่น</h5>
+                    </div>
+                   </div>
+                   <div class="col-4 ">
+                        <img src="img/ถุงPPรวม.jpg" class="rounded rounded-circle img-fluid" style="max-height: 320px;">
+                        <div class="card d-flex justify-content-between border border-dark mt-2 mb-2 text-center" style="max-width: 236px;">
+                        <h5>ถุง LLDPE <br> เนื้อใส - นิ่ม</h5>
+                    </div>
+                   </div>
+                   <div class="col-4">
+                        <img src="img/ถุงเย็นLLรวม.jpg" class="rounded rounded-circle img-fluid" style="max-height: 320px;">
+                        <div class="card d-flex justify-content-between border border-dark mt-2 mb-2 text-center" style="max-width: 236px;">
+                        <h5>ถุง PP <br> เนื้อใสมาก</h5>
+                    </div>
+                   </div>
+                </div>
+                <div>
+                <div class="card mt-2 mb-5" style="max-height:600px;">
+                    <div class="row">
+                    <div class="col-5">
+                        <img src="img/p1.gif" height="600px" width="auto" class="img-fluid">
+                    </div>
+                    <div class="col-6">
+                        <h1 class="text-center mt-5" style="color:#aebdac"><strong><u>แผ่นบรรจุอาหาร</u></strong></h1>
+                        <p style="color:#aebdac" class="text-center">ถุงหูหิ้ว HDPE, ถุงร้อน PP, ถุงเย็น LLDPE และถุงสั่งทำ</p>
+                        <h4 class="mt-5 text-center px-5">กระดาษเคลือบพลาสติกหรือแผ่นพลาสติก สำหรับห่ออาหารที่ สะอาด และปลอดภัย  
+                            ได้มาตราฐาน ด้วยความใส่ใจดูแลทุกขั้นตอนการผลิตอย่างละเอียด</h4>
+                        <div class="mt-3 text-center">
+                            <a class="btn btn-primary" href="product.php" style="background-color:brown;border-color:brown;"><i>หน้าสินค้า</i></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-1"></div>
+                    <div class="col-5">
+                        <h3 class="m-0 text-center text-white"><strong>ติดต่อเรา</strong></h3><br>
+                        <p class="m-0 text-start text-white">บริษัท  ไทยเทคนิค  พลาส  - แมช  จำกัด <br> 814, 814/1  ถนนเอกชัย  แขวงบางบอนเหนือ <br>เขตบางบอน  กรุงเทพ 10150.</p>    
+                        <p class="m-0 text-start text-white">โทรศัพท์ : 02-415-1666  <br>&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;02-415-0048 <br>&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;02-899-6754-8 <br>&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;089-793-4307</p>
+                        <p class="m-0 text-start text-white">โทรสาร : &nbsp;&nbsp;02-416-4706</p>
+                        <p class="m-0 text-start text-white">E-mail : &nbsp;&nbsp;&nbsp;tpmcoth@yahoo.com</p>
+                        <p class="m-0 text-start text-white">Line ID : &nbsp;&nbsp;tpmcoth</p>
+                    </div>
+                    <div class="col-5">
+                        <h3><p class="m-0 text-center text-white"><b>เวลาเปิดทำการ</b></p></h3><br>
+                        <p class="m-0 text-start text-white">วันจันทร์ - วันเสาร์  เวลา 08:00-17:00 น</p>
+                        <p class="m-0 text-start text-white">วันอาทิตย์  หยุดทำการ</p>
+                        <br>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.098805991059!2d100.40192024306499!3d13.66185642249991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2bd0fa6cec8c7%3A0x18b8d4facd8b0217!2z4Lia4Lij4Li04Lip4Lix4LiXIOC5hOC4l-C4ouC5gOC4l-C4hOC4meC4tOC4hOC4nuC4peC4suC4qi3guYHguKHguIog4LiI4Liz4LiB4Lix4LiU!5e0!3m2!1sen!2sth!4v1702542080831!5m2!1sen!2sth" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    <div class="col-1"></div>
+                </div>
+                </div>
+            </footer>
+            <!-- Bootstrap core JS-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="js/scripts.js"></script>
     </body>
 </html>
+<?php 
+        }
+?>
