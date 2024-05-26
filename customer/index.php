@@ -1,10 +1,6 @@
 <?php 
     require_once('fn.php');
     require_once('dbcon.php');
-    if(!isset($_SESSION['login_username']))
-    {
-        redirect('login.php');
-    }else{
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +51,11 @@
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </a>
                         <?php 
+                        if(isset($_SESSION['login_user'])){
                             echo '<li><button class="btn btn-black-text btn-outline-dark"><a href="logout.php">, '.$_SESSION['login_name'].'</a></button></li>';
+                        }else{
+                            echo '<li><button class="btn btn-black-text btn-outline-dark"><a href="login.php">Login</a></button></li>';
+                        }
                         ?>
                     </form>
                 </div>
@@ -169,6 +169,3 @@
         <script src="js/scripts.js"></script>
     </body>
 </html>
-<?php 
-    }
-?>

@@ -38,19 +38,19 @@
 								</div>
 
 								<div class="mb-3">
+									<label class="mb-2 text-muted" for="password">รหัสผ่าน</label>
+									<input id="password" type="password" class="form-control" name="password" min="8" max="16" required>
+								    <div class="invalid-feedback">
+								    	ต้องระบุรหัสผ่าน
+							    	</div>
+
+								<div class="mb-3">
 									<label class="mb-2 text-muted" for="username">เบอร์โทรศัพท์มือถือ</label>
 									<input id="username" type="text" class="form-control" name="username" value="" required>
 									<div class="invalid-feedback">
 										เบอร์โทรศัพท์มือถือไม่ตรงกับที่ลงทะเบียนไว้
 									</div>
 								</div>
-
-								<div class="mb-3">
-									<label class="mb-2 text-muted" for="password">รหัสผ่าน</label>
-									<input id="password" type="password" class="form-control" name="password" min="8" max="16" required>
-								    <div class="invalid-feedback">
-								    	ต้องระบุรหัสผ่าน
-							    	</div>
 								</div>
 
 								<div class="align-items-center d-flex">

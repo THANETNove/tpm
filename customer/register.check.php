@@ -5,7 +5,7 @@ require_once('fn.php');
 // Retrieve form data
 $username = $_POST["username"];
 $name = $_POST["name"];
-$password = $_POST["password"]; // Hash the password for security
+$password = $_POST[md5("password")]; // Hash the password for security
 
 // Check if the username or email already exists in the database
 $check_sql = "SELECT * FROM customer WHERE c_user = ?";

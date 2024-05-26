@@ -9,7 +9,7 @@
     $inputUsername = $_POST['username'];
     $inputPassword = $_POST['password'];
 
-    $SQL = 'SELECT * FROM customer WHERE c_user ="'.$inputUsername.'" AND c_pass = "'.$inputPassword.'" ';
+    $SQL = 'SELECT * FROM employee WHERE e_user ="'.$inputUsername.'" AND e_pass = "'.md5($inputPassword).'" ';
     $result=$mysqli->query($SQL);
     $countuser = $result->num_rows;
     $userdata=$result->fetch_assoc();
