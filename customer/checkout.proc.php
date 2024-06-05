@@ -23,10 +23,11 @@ $mail->CharSet = "UTF-8";
 $mail->SMTPAuth = true;
 $mail->Username = "novel2020manga@gmail.com";
 $mail->Password = "gqce vaqj xwjm azmz";
-/* $mail->Port = 587;
-$mail->SMTPSecure = "tls"; */
-$mail->Port = 465;
-$mail->SMTPSecure = "ssl";
+$mail->Port = 587;
+$mail->SMTPSecure = "tls";
+
+/* $mail->Port = 465;
+$mail->SMTPSecure = "ssl"; */
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "555";
@@ -49,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "888";
                 // Extract other details from the form
                 $customerName = $_POST["customerName"];
-                $customerEmail =   $_POST["customerEmail"] ;//"lollipopwar-love@hotmail.co.th"
+                $customerEmail =  "lollipopwar-love@hotmail.co.th" /* $_POST["customerEmail"] */;//
                 $customerAddress = $_POST["address"];
                 $productStatus = "อยู่ระหว่างตรวจสอบหลักฐานการชำระเงิน";
                 $customerPay = $_POST["payPrice"];
@@ -123,14 +124,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $total_price += $price;
                         $sum_weight += $total_weight;
 
+                        $imagePath = '../Admin/uploads/product_img/' . $list['p_img'];
+                        // ที่ใช้ได้ start path img
+                       // $imagePath = "https://png.pngtree.com/thumb_back/fh260/background/20210903/pngtree-sunflower-summer-sunflower-flower-park-photography-picture-image_800070.jpg";
+                        // end  path img
+                        //$imagePath = "/Applications/XAMPP/xamppfiles/htdocs/project/tpm/Admin/uploads/product_img/page1/red_green6x14.webp";
+
+
+
                         $htmlContent .= "
-                                            <tr>
-                                                <td><img class='p-3' src='../Admin/uploads/product_img/{$list['p_img']}' style='max-height: 200px;'></td>
-                                                <td>{$list['p_name']}</td>
-                                                <td class='text-center'>{$list['d_quantity']}</td>
-                                                <td class='text-end'>฿" . number_format($list['p_price'], 2) . "</td>
-                                                <td class='text-end'>฿" . number_format($price, 2) . "</td>
-                                            </tr>";
+                        <tr>
+                            <td><img class='p-3' src='$imagePath' style='max-height: 200px;'></td>
+                            <td>{$list['p_name']}</td>
+                            <td class='text-center'>{$list['d_quantity']}</td>
+                            <td class='text-end'>฿" . number_format($list['p_price'], 2) . "</td>
+                            <td class='text-end'>฿" . number_format($price, 2) . "</td>
+                        </tr>";
                     }
 
                     $htmlContent .= "
@@ -181,6 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->addAddress($customerEmail);
                     $mail->Subject = "ใบสั่งซื้อสินค้าเลขที่ : " . $orderRef;
                     $mail->Body = $htmlContent;
+                   
 
 JAlert("สั่งซื้อเรียบร้อย");
 $mail->send();
