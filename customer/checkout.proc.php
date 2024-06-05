@@ -21,8 +21,8 @@ $mail->isSMTP();
 $mail->Host = "smtp.gmail.com";
 $mail->CharSet = "UTF-8";
 $mail->SMTPAuth = true;
-$mail->Username = "novel2020manga@gmail.com";
-$mail->Password = "gqce vaqj xwjm azmz";
+$mail->Username = "";
+$mail->Password = "";
 $mail->Port = 587;
 $mail->SMTPSecure = "tls";
 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "888";
                 // Extract other details from the form
                 $customerName = $_POST["customerName"];
-                $customerEmail =  "lollipopwar-love@hotmail.co.th" /* $_POST["customerEmail"] */;//
+                $customerEmail =   $_POST["customerEmail"];//
                 $customerAddress = $_POST["address"];
                 $productStatus = "อยู่ระหว่างตรวจสอบหลักฐานการชำระเงิน";
                 $customerPay = $_POST["payPrice"];
